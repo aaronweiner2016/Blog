@@ -28,20 +28,6 @@ User.init(
         isEmail: true,
       },
     },
-    notes_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Notes",
-        key: "id",
-      }
-    },
-    post_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "Post",
-        key: "id",
-      }
-    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,

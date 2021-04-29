@@ -2,8 +2,21 @@
   {
     "name": "Aaron",
     "email": "test@test.com",
-    "notes_id": 1,
-    "post_id": 1,
+    "password": "password"
+  },
+  {
+    "name": "Alexa",
+    "email": "test2@test.com",
+    "password": "password"
+  },
+  {
+    "name": "Stefanie",
+    "email": "test3@test.com",
+    "password": "password"
+  },
+  {
+    "name": "Caleb",
+    "email": "test4@test.com",
     "password": "password"
   }
 ]

@@ -22,9 +22,9 @@ User.hasMany(Post, {
     foreignKey: "user_id"
 });
 
-// User.hasMany(Notes, {
-//     foreignKey: "notes_id"
-// });
+User.hasMany(Notes, {
+    foreignKey: "notes_id"
+});
 
 module.exports = {
     User,

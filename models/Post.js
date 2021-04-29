@@ -18,20 +18,6 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: "User",
-                key: "id",
-            }
-        },
-        notes_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: "Notes",
-                key: "id",
-            }
-        },
     },
     {
         sequelize,
