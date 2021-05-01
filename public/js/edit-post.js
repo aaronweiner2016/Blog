@@ -21,5 +21,7 @@ editPost.addEventListener('click', async function (e) {
             alert('Failed to sign up.');
         }
     }
+    document.location.href = '/homepage';
+
 
 })

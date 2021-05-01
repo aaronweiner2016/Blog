@@ -1,6 +1,6 @@
 <!-- Loop over each user object -->
 {{#each posts as |post| }}
-<a href="/edit-posts/{{post.id}}" class="card mb-2">
+<a href="/edit-posts/{{post.id}}" class="card mb-2" style="text-decoration: none; color: black;">
     <div class="card-header">
         <span class="d-flex justify-content-between">
             <span>{{post.title}}</span>
@@ -10,4 +10,6 @@
 </a>
 {{/each}}
 
-<a href="/new-post"><button type="button" class="btn btn-primary btn-lg">New Post</button></a>
+<div style="width: 100%; display: flex; justify-content: center;">
+    <a href="/new-post"><button type="button" class="btn btn-primary btn-lg">New Post</button></a>
+</div>

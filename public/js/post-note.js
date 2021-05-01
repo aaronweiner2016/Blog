@@ -4,7 +4,7 @@ var buttonComment = document.querySelectorAll('.form-comment');
 buttonComment.forEach(function (el) {
     el.addEventListener('click', async function (e) {
         var postId = e.target.parentNode.dataset.post
-        var commentText = e.target.previousElementSibling.value
+        var commentText = e.target.previousElementSibling.previousElementSibling.value
 
         if (commentText) {
             const response = await fetch('/api/notes/' + postId, {

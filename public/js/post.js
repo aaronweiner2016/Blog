@@ -12,10 +12,11 @@ postPost.addEventListener('click', async function (e) {
             headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {
-            document.location.reload();
+            console.log("Good to go")
         } else {
             alert('Failed to post');
         }
     }
+    document.location.href = '/homepage';
 
 })

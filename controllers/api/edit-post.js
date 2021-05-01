@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Post, User } = require('../../models');
 
 router.put('/:id', async (req, res) => {
-    console.log('body', req.body)
     Post.update({
         title: req.body.title,
         body: req.body.body,

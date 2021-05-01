@@ -2,8 +2,35 @@ const router = require('express').Router();
 const { User, Post, Notes } = require('../models');
 const withAuth = require('../utils/auth');
 
+router.get('/', async (req, res) => {
+  const postData = await Post.findAll({
+    include: [{
+      model: Notes,
+      include: [{
+        model: User,
+        attributes: { exclude: ["password"] },
+      },]
+    }, {
+      model: User,
+      attributes: { exclude: ["password"] }
+    }]
+  });
+
+  const posts = postData.map((data) => data.get({ plain: true }))
+    .map(val => {
+      return {
+        ...val,
+        logged_in: req.session.logged_in,
+      }
+    })
+
+  res.render('dashboard', {
+    posts,
+  });
+});
+
 // Prevent non logged in users from viewing the homepage
-router.get('/', withAuth, async (req, res) => {
+router.get('/homepage', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: {
@@ -23,33 +50,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 
-router.get('/dashboard', withAuth, async (req, res) => {
-  const postData = await Post.findAll({
-    include: [{
-      model: Notes,
-      include: [{
-        model: User,
-        attributes: { exclude: ["password"] }
-      }]
-    }]
-  });
-  const posts = postData.map((data) => data.get({ plain: true }));
 
-  const noteData = await Notes.findAll({
-
-    include: [{
-      model: User,
-      attributes: { exclude: ["password"] }
-    }]
-
-  });
-  const notes = noteData.map((data) => data.get({ plain: true }));
-  res.render('dashboard', {
-    posts,
-    notes,
-    logged_in: req.session.logged_in,
-  });
-});
 
 
 router.get('/login', async (req, res) => {
